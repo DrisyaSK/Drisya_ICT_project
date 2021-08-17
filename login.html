@@ -12,53 +12,132 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 
+    <link rel = "icon" type = "image/png" href = "images/logo - Copy.ico">
+    <style>
+      * {box-sizing: border-box}
+
+      body{
+        background:linear-gradient(White,grey);
+      }
+/* Full-width input fields */
+input[type=text], input[type=password] {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+hr {
+border: 1px solid #f1f1f1;
+margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+background-color: #04AA6D;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+}
+
+button:hover {
+opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+padding: 14px 20px;
+background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .loginbtn {
+float: left;
+width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+
+padding: 16px;
+width:40%;
+height: 30%;
+background-color:slategray;
+}
+
+/* Clear floats */
+.clearfix::after {
+content: "";
+clear: both;
+display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+.cancelbtn, .signupbtn {
+width: 100%;
+}
+#forgot:hover{
+  color:red;
+}
+#signup:hover{
+  color:red;
+}
+
+  </style>
 </head>
 <body>
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">HOME</a>
+          <a class="nav-link" aria-current="page" href="index.html">HOME</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="districts.html">DISTRICTS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.html">LOGIN</a>
+          <a class="nav-link active" href="login.html">LOGIN</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">CONTACT US</a>
         </li>
       </ul>
-
-    <br>
-    <div class="login">
-        <center><h2>LOGIN</h2>  </center>
-    </div>
-    <br>
     
     <div class="container">
-        <form action="#" class="login-form">
-            <div>
-                <h3><label id="user">Username</label></h3>
-                <center><input type="text" placeholder="enter ur username" ></center>
-            </div>
-            <br>
-            <div>
-                <h3><label id="pass">Password</label></h3>
-            <center><input type="password" placeholder="enter ur password"></center>
-            </div>
-            <br>
-                <h4><a href="#" >Forget password?</h4></a>
-            <br>
-            <center><button id="butt">LogIn</button></center>
-            <br>
-            <a href="#" id="new"> Don't have an account? SIGNUP </a>
-        </form>        
-        
-        
+      <h1>Log In</h1>
+     
+      <hr>
+      <form action="#">
+        <label for="email"><b>Username</b></label>
+        <input type="text" placeholder="Enter username" name="username" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+  
+        <label>
+          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+  
+        <p><a id="forgot" href="#" style="color:blue">Forget password?</a></p>
+  
+        <div class="clearfix">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <button type="submit" class="loginbtn">Log In</button>
+        </div>
+        <a id="signup" href="signup.html"  alt="signup" style="color:blue">Need an account? SIGNUP</a>
+      </form>
     </div>
-    
-    
         
         
 </body>

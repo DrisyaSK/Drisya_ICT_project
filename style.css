@@ -3,9 +3,12 @@
     margin:0;
 }
 body{
-    background-image:url("images/plainimage.jpg");
+    /*background-image:url("images/plainimage.jpg");
     background-size: cover;
    
+   background:linear-gradient(white,black);*/
+   background-image: url("images/frontfoto.jpg");
+   background-size: cover;
 }
 .header-part{
     /*border:2px solid black;*/    
@@ -76,37 +79,11 @@ a:hover{
     width: 40%;
     height: 40%;
 }
-/*.container{
-    width: 40%;
-    height: 40%;
-    overflow: hidden;
-        
-    border: 2px solid black;
-}
-.box1{
-    width:20%;
-    height: 20%;
-    float:left;
-    border: 2px solid white;
-    
-    
-}
-.box1 h4{
-    padding:5px;
-    text-align: center;
-    text-transform: uppercase;
-    color:white;
-}
-.box1 p{
-    padding:10px;
-    text-align:justify;
-    color:white;
 
-}*/
-h2{
-    color:lightblue;
+.logo-head h2{
+    color:blue;
     text-transform: capitalize;
-    text-decoration-style: wavy;
+    font-size:3em;
 }
 
 
