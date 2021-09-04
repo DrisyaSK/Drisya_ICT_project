@@ -12,7 +12,9 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
         <link rel = "icon" type = "image/png" href = "images/logo - Copy.ico">
-        
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
         <style>
             * {box-sizing: border-box}
 
@@ -89,6 +91,11 @@
       width: 100%;
     }
   }
+  #list li{
+      list-style-type: none;
+      display: inline;
+      padding: 15%;
+  }
   
         </style>
 </head>
@@ -115,15 +122,41 @@
         <p>Fill in this form to create an account.</p>
         <hr>
         <form action="#">
+          <label for="name"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
+          <input type="text" placeholder="Enter Email" id="email" name="email" required>
+          <p id="emailmsg"></p>
     
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-    
+          <label for="psw"><b>Create a Password</b></label>
+          <input type="password" id="psw" placeholder="Enter Password" autocomplete="current-password" name="psw" required> 
+          
+          <p id="para" hidden="true" > Password Length should be minimum of 8 characters,containing atleast 1 uppercase,1 lowercase
+            and one digit.</p>
+
+
           <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+          <input type="password" placeholder="Repeat Password" id="repeatpsw" name="psw-repeat" required>
+          
+
+          <p id="repeatmsg"></p>
+
+          <label for="phoneno"><b>Phone number</b></label>
+          <input type="text" placeholder="Enter phone number" name="phoneno" id="phoneno" required>
+          <p id="phonemsg"></p>
     
+          <label for="gender"><b>Gender</b></label>
+          <ul id="list">
+              <li><input type="radio"  id="male" name="radiog" value="Male">
+              <label for ="male"><b>Male</b></label>
+              </li>
+              <li><input type="radio" id="female" name="radiog" value="Female">
+              <label for ="female"><b>Female</b></label>
+              </li>
+          </ul>
+          
+          <br>
           <label>
             <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
           </label>
@@ -132,9 +165,121 @@
     
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Sign Up</button>
+            <button type="submit" class="signupbtn" onclick="return validate()">Sign Up</button>
           </div>
         </form>
       </div>
+
+      <script>
+            var psw=document.getElementById("psw");
+            var msg=document.getElementById("para");
+            var repeatpsw=document.getElementById("repeatpsw");
+            var repeatmsg=document.getElementById("repeatmsg");
+            var phoneno=document.getElementById("phoneno");
+            var phonemsg=document.getElementById("phonemsg");
+            var email=document.getElementById("email");
+            var emailmsg=document.getElementById("emailmsg");
+
+            email.onblur= function()
+            {
+                var exp=/^\w+([\.-]?\w+)*@[A-Za-z]+([\.-]?\w+)*(\.[A-Za-z]{2,3})+$/;
+                if(exp.test(email.value))
+                {
+                    console.log("email valid...");
+                    emailmsg.setAttribute("hidden","true");
+
+                }
+                else
+                {
+                    emailmsg.innerText="Email ID is invalid.";
+                    emailmsg.style.color="orange";
+                    emailmsg.style.fontSize="1.1em";
+                    emailmsg.style.fontWeight="bold";
+
+                    email.focus();
+                    email.value="";
+                }
+            }
+
+            phoneno.onblur=function()
+            {
+              
+              var exp=/^\(?([0-9]{3})\)?[- .]?([0-9]{3})[- .]?([0-9]{4})$/;
+              if ((exp.test(phoneno.value)))
+              {
+                  console.log("phone no correct...");
+                  phonemsg.setAttribute("hidden","true");
+              }
+              else
+              {
+                  
+                  phonemsg.innerText="Phone number format is XXX-XXX-XXXX or XXX.XXX.XXXX or XXXXXXXXXX";
+                  phonemsg.style.color="orange";
+                  phonemsg.style.fontWeight="bold";
+                  phonemsg.style.fontSize="1.1em";
+
+                  phoneno.focus();
+                  phoneno.value="";
+              }
+            }
+            repeatpsw.onblur=function()
+            {
+              console.log(repeatpsw.value);
+              console.log(psw.value);
+                if (repeatpsw.value.match(psw.value))
+                {
+                    console.log("password matching...");                 
+                    repeatmsg.setAttribute("hidden","true");
+                   
+                }
+                else
+                {
+                    console.log("false");
+                    repeatmsg.innerText="Password mismatch!!!";
+                    repeatmsg.style.color="orange";
+                    repeatmsg.style.fontSize="1.2em";
+                    repeatmsg.style.fontWeight="bold";
+                    
+                    repeatpsw.value="";
+                    repeatpsw.focus();
+                }
+            }
+            
+            psw.onfocus=function()
+            {
+                  psw.value="";
+                  /*msg.setAttribute("hidden","true");*/
+            }
+        psw.onblur= function()
+        {   
+            
+            
+            //document.writeln(password.value);
+            var exp= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            if(exp.test(psw.value))
+            {
+              console.log("password right");
+              msg.setAttribute("hidden","true");
+            }
+            else
+            {
+                msg.removeAttribute("hidden","true");
+                msg.style.color="orange";
+                msg.style.fontWeight="bold";
+                msg.style.fontSize="1.2em";
+                
+                psw.focus();
+                
+            }
+        }        
+          
+        
+        
+            function validate()
+            {
+
+            }
+      </script>
 </body>
+
 </html>
